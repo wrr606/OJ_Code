@@ -31,7 +31,7 @@ string int_bin(int x){
 }
 
 int main(){
-    //ios::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    ios::sync_with_stdio(0),cin.tie(0),cout.tie(0);
     int n,s11,s22;
     string s1,s2,sign;
     cin>>n;
