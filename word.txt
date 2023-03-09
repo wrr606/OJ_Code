@@ -1,9 +1,14 @@
+essentially
+function
+mouse
+cursor
+removing
+traditional
 input
-device
+devices
 necessary
 desktop
 laptop
-hideable
 virtual
 keyboard
 integrate
@@ -13,3 +18,4 @@ various
 design
 Convertible
 swivel
+slide
