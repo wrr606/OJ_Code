@@ -3,7 +3,6 @@ device
 necessary
 desktop
 laptop
-onscreen
 hideable
 virtual
 keyboard
