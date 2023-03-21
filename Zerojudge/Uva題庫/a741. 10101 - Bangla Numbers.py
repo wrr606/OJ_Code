@@ -17,7 +17,6 @@ def xxx(n):
         n%=100
     if(n!=0):
         print(n," ",sep='',end='')
-    
 
 counter=0
 while 1:
