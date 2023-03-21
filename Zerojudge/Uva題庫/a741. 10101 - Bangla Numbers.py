@@ -24,7 +24,6 @@ while 1:
         counter+=1
         x=int(input())
         print(counter,". ",sep='',end='')
-        
         if(x):
             xxx(x)
         else:
