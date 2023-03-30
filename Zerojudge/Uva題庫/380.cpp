@@ -8,7 +8,7 @@ using namespace std;
 #define ll long long
 
 int main(){
-    //ios::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    ios::sync_with_stdio(0),cin.tie(0),cout.tie(0);
     int t,start,duration;
     bool b=1;
     string x,y;
@@ -26,7 +26,7 @@ int main(){
         cout<<"SYSTEM "<<c<<endl;
         while(cin>>y&&y!="9000"){
             cin>>x;
-            cout<<"AT "<<y<<" CALL TO "<<x;
+            cout<<"AT "<<y<<" CALL TO "<<x<<" ";
             start=stoi(y);
             b=1;
             string a=x;
@@ -47,12 +47,13 @@ int main(){
                     }
                 }
             }
-            cout<<" RINGS "<<x<<endl;
+            cout<<"RINGS "<<y<<endl;
         }
     }
     cout<<"END OF OUTPUT\n";
 }
 /*
+3
 1111 0100 0200 2222
 1111 0301 0500 4444
 2222 0200 0200 3333
@@ -69,4 +70,19 @@ int main(){
 0900 3000
 1250 3333
 1250 7777
+9000
+0000
+3000 1111
+9000
+0060 0000 0300 1000
+1000 0060 0200 1500
+1500 0030 0090 8000
+2000 3000 1000 3000
+3000 3000 1000 2000
+0000
+0030 0060
+0060 0060
+0000 2000
+3500 2000
+9000
 */
