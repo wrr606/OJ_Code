@@ -6,9 +6,6 @@ using namespace std;
 #define all(x) x.begin(),x.end() 
 #define ll long long
 
-bool cmp(int a,int b){
-    return a>b;
-}
 
 int main(){
     ios::sync_with_stdio(0),cin.tie(0),cout.tie(0);
@@ -16,10 +13,10 @@ int main(){
     cin>>a>>b;
     if(b>a)
         swap(a,b);
-    while(b!=0){
-        int temp=b;
-        b=a%b;
-        a=;
+    while(b>0){
+        counter+=a/b;
+        a=a%b;
+        swap(a,b);
     }
-    cout<<counter<<endl;
+    cout<<--counter<<endl;
 }
