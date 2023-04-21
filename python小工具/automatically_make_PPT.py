@@ -16,7 +16,7 @@ for line in word_file.readlines():
 #print(word)
 
 #爬蟲
-driver = webdriver.Chrome('D:\chromedriver')
+driver = webdriver.Edge('msedgedriver.exe')
 driver.maximize_window()
 driver.get('https://dictionary.cambridge.org/zht/')
 translation_and_example=[[""]*5 for i in range(40)]
