@@ -32,8 +32,8 @@ int main(){
     int n,m,x,y;
     while(cin>>n&&n){
         cin>>m;
-        invited.reset(),point.clear(),ans=1;
-        for(int c=0;c<m;c++){
+        invited.reset(),point.clear(),ans=1;//初始化
+        while(m--){
             cin>>x>>y;
             point.push_back({x,y});
         }
