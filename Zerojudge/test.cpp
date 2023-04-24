@@ -1,15 +1,14 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<Windows.h>
 using namespace std;
-
-#define endl '\n'
-#define pii pair<int,int>
-#define all(x) x.begin(),x.end() 
-#define ll long long
-
+const int all_block_num=100;
 int main(){
-    //ios::sync_with_stdio(0),cin.tie(0),cout.tie(0);
-    int n;
-    while(cin>>n){
-        bitset<123> x;
-    }
+	for(int i=0;i<all_block_num;i++){
+		printf("\r[%d%%]>",i*100/(all_block_num-1));
+		for(int j=1;j<=i*20/all_block_num;j++){
+			cout<<"▉";
+			Sleep(10);
+		}
+	}
+	return 0;
 }
