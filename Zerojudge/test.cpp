@@ -8,14 +8,11 @@ using namespace std;
 
 int main(){
     //ios::sync_with_stdio(0),cin.tie(0);
-	deque<int> x;
-	x.push_back(1);
-	x.push_back(2);
-	x.push_back(3);
-	for(auto i:x){
-		x.pop_front();
-	}
-	for(auto i:x){
-		cout<<i<<" ";
-	}
+	vector<int> x{1,2,3};
+	x.erase(x.begin());
+	x.erase(x.begin());
+	x.erase(x.begin());
+	for(auto i:x)
+		cout<<i<<endl;
+	cout<<"OK";
 }
