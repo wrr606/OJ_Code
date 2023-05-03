@@ -16,20 +16,17 @@ for line in word_file.readlines():
 #print(word)
 
 #爬蟲
-driver = webdriver.Edge('msedgedriver.exe')
+driver = webdriver.Chrome('chromedriver.exe')
 driver.maximize_window()
 driver.get('https://dictionary.cambridge.org/zht/')
 translation_and_example=[[""]*5 for i in range(40)]
 #print(translation_and_example)
 counter=-1
 for i in word:
+    driver.get('https://dictionary.cambridge.org/zht/%E8%A9%9E%E5%85%B8/%E8%8B%B1%E8%AA%9E-%E6%BC%A2%E8%AA%9E-%E7%B9%81%E9%AB%94/'+i)
     counter+=1
     print(i)
     #driver.find_element(By.XPATH,'//*[@id="searchForm"]/div[2]/div/div/div/span[1]').click()
-    for j in range(50):
-        driver.find_element(By.NAME,'q').send_keys("\ue017")
-    driver.find_element(By.NAME,'q').send_keys(i)
-    driver.find_element(By.NAME,'q').submit()
     traslation=driver.find_elements(By.CLASS_NAME,"trans.dtrans.dtrans-se.break-cj")
     for j in traslation:
         temp=j.text
