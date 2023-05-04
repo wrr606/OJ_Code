@@ -7,12 +7,11 @@ using namespace std;
 #define ll long long
 
 int main(){
-    //ios::sync_with_stdio(0),cin.tie(0);
-	vector<int> x{1,2,3};
-	x.erase(x.begin());
-	x.erase(x.begin());
-	x.erase(x.begin());
+	map<string,int> x;
+	x["1236"]=1;
+	x["1235"]=1;
+	x["1111"]=1;
+	x["11"]=1;
 	for(auto i:x)
-		cout<<i<<endl;
-	cout<<"OK";
+		cout<<i.first<<" "<<i.second<<endl;
 }
