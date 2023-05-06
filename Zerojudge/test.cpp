@@ -6,12 +6,37 @@ using namespace std;
 #define all(x) x.begin(),x.end() 
 #define ll long long
 
+struct Node
+{
+	bool have_value;
+	Node* left;
+	Node* right;
+	int data;
+	Node():have_value(0),left(NULL),right(NULL){}
+};
+
+Node* newnode(){
+	return new Node();
+}
+
+Node* root;
+
+void addnode(int v,string s){
+	int n=s.size();
+	Node* u=root;
+	for(auto i:s){
+		if(i=='L'){
+			if(u->left==NULL)
+				u->left=newnode();
+			u=u->left;
+		}
+		else if(i=='R'){
+			if(u->right==NULL)
+				u->right=newnode();
+			u=u->right;
+		}
+	}
+}
+
 int main(){
-	map<string,int> x;
-	x["1236"]=1;
-	x["1235"]=1;
-	x["1111"]=1;
-	x["11"]=1;
-	for(auto i:x)
-		cout<<i.first<<" "<<i.second<<endl;
 }
