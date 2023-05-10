@@ -1,42 +1,85 @@
-#include<bits/stdc++.h>
+#include <iostream>
+
 using namespace std;
 
-#define endl '\n'
-#define pii pair<int,int>
-#define all(x) x.begin(),x.end() 
-#define ll long long
+// 二元樹節點
+class Node {
+public:
+    int data;
+    Node* left;
+    Node* right;
 
-struct Node
-{
-	bool have_value;
-	Node* left;
-	Node* right;
-	int data;
-	Node():have_value(0),left(NULL),right(NULL){}
+    Node(int value) {
+        data = value;
+        left = nullptr;
+        right = nullptr;
+    }
 };
 
-Node* newnode(){
-	return new Node();
-}
+// 二元樹
+class BinaryTree {
+public:
+    Node* root;
 
-Node* root;
+    BinaryTree() {
+        root = nullptr;
+    }
 
-void addnode(int v,string s){
-	int n=s.size();
-	Node* u=root;
-	for(auto i:s){
-		if(i=='L'){
-			if(u->left==NULL)
-				u->left=newnode();
-			u=u->left;
-		}
-		else if(i=='R'){
-			if(u->right==NULL)
-				u->right=newnode();
-			u=u->right;
-		}
-	}
-}
+    // 插入節點
+    void insert(int value) {
+        Node* newNode = new Node(value);
 
-int main(){
+        if (root == nullptr) {
+            root = newNode;
+        }
+        else {
+            Node* curr = root;
+            while (true) {
+                if (value < curr->data) {
+                    if (curr->left == nullptr) {
+                        curr->left = newNode;
+                        break;
+                    }
+                    else {
+                        curr = curr->left;
+                    }
+                }
+                else {
+                    if (curr->right == nullptr) {
+                        curr->right = newNode;
+                        break;
+                    }
+                    else {
+                        curr = curr->right;
+                    }
+                }
+            }
+        }
+    }
+
+    // 遍歷二元樹
+    void traverse(Node* node) {
+        if (node != nullptr) {
+            traverse(node->left);
+            cout << node->data << " ";
+            traverse(node->right);
+        }
+    }
+};
+
+int main() {
+    BinaryTree tree;
+
+    // 插入節點
+    tree.insert(5);
+    tree.insert(2);
+    tree.insert(7);
+    tree.insert(1);
+    tree.insert(4);
+
+    // 遍歷二元樹
+    tree.traverse(tree.root);
+    cout << endl;
+
+    return 0;
 }
