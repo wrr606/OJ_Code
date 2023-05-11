@@ -1,85 +1,21 @@
 #include <iostream>
-
 using namespace std;
-
-// 二元樹節點
-class Node {
-public:
-    int data;
-    Node* left;
-    Node* right;
-
-    Node(int value) {
-        data = value;
-        left = nullptr;
-        right = nullptr;
-    }
-};
-
-// 二元樹
-class BinaryTree {
-public:
-    Node* root;
-
-    BinaryTree() {
-        root = nullptr;
-    }
-
-    // 插入節點
-    void insert(int value) {
-        Node* newNode = new Node(value);
-
-        if (root == nullptr) {
-            root = newNode;
-        }
-        else {
-            Node* curr = root;
-            while (true) {
-                if (value < curr->data) {
-                    if (curr->left == nullptr) {
-                        curr->left = newNode;
-                        break;
-                    }
-                    else {
-                        curr = curr->left;
-                    }
-                }
-                else {
-                    if (curr->right == nullptr) {
-                        curr->right = newNode;
-                        break;
-                    }
-                    else {
-                        curr = curr->right;
-                    }
-                }
-            }
+int n, ans=0, put[100], visited[3][100];
+void search(int now){
+    if(now == n) ans++; //跑到最後一行了，代表這組解ok
+    else for(int i=0; i<n; i++){
+        if(!visited[0][i] && !visited[1][now+i] && !visited[2][now-i+n]){
+            //比直的；比x+y對角線(x是now,y是i)；比x-y對角線(因為會出現負值所以+n)
+            put[now] = i; //把第now行的皇后放在第i列
+            visited[0][i] = visited[1][now+i] = visited[2][now-i+n] = 1;
+            search(now+1);
+            visited[0][i] = visited[1][now+i] = visited[2][now-i+n] = 0; //改回來
         }
     }
-
-    // 遍歷二元樹
-    void traverse(Node* node) {
-        if (node != nullptr) {
-            traverse(node->left);
-            cout << node->data << " ";
-            traverse(node->right);
-        }
-    }
-};
-
-int main() {
-    BinaryTree tree;
-
-    // 插入節點
-    tree.insert(5);
-    tree.insert(2);
-    tree.insert(7);
-    tree.insert(1);
-    tree.insert(4);
-
-    // 遍歷二元樹
-    tree.traverse(tree.root);
-    cout << endl;
-
-    return 0;
 }
+int main(){
+    cin >> n;
+    search(0);
+    cout << ans << '\n';
+}
+//[input] 8 [output] 92
