@@ -8,7 +8,13 @@ using namespace std;
 
 int main(){
     //ios::sync_with_stdio(0),cin.tie(0);
-    string s="123456789";
-    int n=s.find("21");
-    cout<<n<<endl;
+    vector<int> x;
+    x.push_back(1);
+    x.push_back(2);
+    x.push_back(3);
+    while(!x.empty()&&x.back()!=0){
+        cout<<x.back()<<endl;
+        x.pop_back();
+    }
+    cout<<"complete"<<endl;
 }
