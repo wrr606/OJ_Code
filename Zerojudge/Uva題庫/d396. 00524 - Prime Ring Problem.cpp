@@ -11,6 +11,7 @@ bitset<40> invited,isprime;
 vector<int> prime;
 int n,ans[40];
 
+//線性質數篩
 void primes(){
     isprime.set(),prime.clear();
     isprime[0]=0,isprime[1]=0;
