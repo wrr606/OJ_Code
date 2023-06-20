@@ -1,90 +1,80 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-#define endl '\n'
-#define pii pair<int,int>
-#define all(x) x.begin(),x.end() 
-#define ll long long
+const int maxd = 200 + 5;
+int a, b, c, d;
+int vis[maxd][maxd];
+int ans[maxd];
 
-class Node{
-public:
-    Node* right;
-    Node* left;
-    int value;
-    Node(){
-        value=-1;
-        left=nullptr;
-        right=nullptr;
+
+struct Node{
+    int x[3];
+    int dist;
+    bool operator<(const Node& node)const{
+        return dist > node.dist;
     }
 };
 
-class Tree{
-public:
-    Node* root;
-    Tree(){
-        root=nullptr;
-    }
-
-    void insert(int data,Node* cur){
-        //cout<<data<<endl;
-        if(root->value==-1){
-            root->value=data;
-        }
-        if(data>cur->value){
-            if(cur->right==nullptr){
-                cur->right=new Node();
-                cur=cur->right;
-                cur->value=data;
-            }
-            else{
-                cur=cur->right;
-                insert(data,cur);
-            }
-        }
-        else if(data<cur->value){
-            if(data<cur->value){
-                cur->left=new Node();
-                cur=cur->left;
-                cur->value=data;
-            }
-            else{
-                cur=cur->left;
-                insert(data,cur);
-            }
+void update_ans(const Node& node)
+{
+    for(int i = 0; i < 3; i++){
+        int x = node.x[i];
+        if(ans[x] < 0 || node.dist < ans[x]){
+            ans[x] = node.dist;
         }
     }
+}
 
-    void BFS(){
-        queue<Node*> que;
-        Node* cur=root;
-        que.push(cur);
-        while(!que.empty()){
-            if(que.front()==nullptr){
-                que.pop();
-                continue;
+void solve()
+{
+    memset(ans, -1, sizeof(ans));
+    memset(vis, 0, sizeof(vis));
+    int cap[3] = {a, b, c};
+    Node start;
+    start.x[0] = 0, start.x[1] = 0, start.x[2] = c;
+    start.dist = 0;
+    priority_queue<Node>pq;
+    pq.push(start);
+    vis[0][0] = 1;
+    while(!pq.empty()){
+        Node u = pq.top(); pq.pop();
+        update_ans(u);
+        if(ans[d] >= 0){
+            break;
+        }
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++) if(i != j){  //if i -> i, it will get into dead loop
+                //i->j
+                if(u.x[i] == 0 || u.x[j] == cap[j]) continue;
+                int amount = min(cap[j], u.x[i] + u.x[j]) - u.x[j];
+                Node v;
+                memcpy(&v, &u, sizeof(u));
+                v.x[i] -= amount;
+                v.x[j] += amount;
+                v.dist = u.dist + amount;
+                if(!vis[v.x[0]][v.x[1]]){
+                    vis[v.x[0]][v.x[1]] = 1;
+                    pq.push(v);
+                }
             }
-            cout<<que.front()->value<<" ";
-            que.push(que.front()->left);
-            que.push(que.front()->right);
-            que.pop();
         }
     }
-};
+    while(d >= 0){
+        if(ans[d] >= 0){
+            cout << ans[d] << ' ' << d << endl;
+            return;
+        }
+        d--;
+    }
+}
 
-
-int main(){
-    ios::sync_with_stdio(0),cin.tie(0);
-    Tree x;
-    x.root=new Node();
-    for(int i=0;i<=10;i++){
-        x.insert(i,x.root);
+int main()
+{
+    int T;
+    cin >> T;
+    while(T--){
+        cin >> a >> b >> c >> d;
+        solve();
     }
-    for(int i=50;i<=100;i+=3){
-        x.insert(i,x.root);
-    }
-    for(int i=10;i<=50;i+=2){
-        x.insert(i,x.root);
-    }
-    x.BFS();
-    cout<<"END\n";
+    return 0;
 }
