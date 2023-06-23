@@ -7,12 +7,5 @@ using namespace std;
 #define ll long long
 
 int main(){
-    map<int,int> x;
-    x[1]++;
-    x[2]++;
-    x[3]++;
-    x[4]++;
-    auto iter=x.rbegin();
-    iter++;
-    cout<<(*iter).first<<endl;
+    
 }
