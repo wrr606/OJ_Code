@@ -7,13 +7,14 @@ using namespace std;
 #define ll long long
 
 int main(){
-    vector<int> x{1,2,3,4,5,6};
-    auto Max=max_element(x.begin(),x.end());
-
-    cout<<*Max<<endl;
-
-    
-
-    for(auto i:x)
-        cout<<i<<" ";
+    string s;
+    while(cin>>s){
+        map<char,int> x;
+        for(auto i:s){
+            x[i]++;
+        }
+        for(auto i:x){
+            cout<<i.first<<"\t"<<i.second<<endl;
+        }
+    }
 }
