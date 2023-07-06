@@ -1,11 +1,27 @@
-#include<bits/stdc++.h>
-using namespace std;
+#include <iostream>
+#include <vector>
 
-#define endl '\n'
-#define pii pair<int,int>
-#define all(x) x.begin(),x.end() 
-#define ll long long
+int main() {
+    std::vector<int> vec;
 
-int main(){
-	//ios::sync_with_stdio(0),cin.tie(0);
+    // 使用范围赋值
+    std::vector<int> source = {1, 2, 3, 4, 5};
+    vec.assign(source.begin(), source.end());
+
+    // 输出赋值后的 vector
+    for (int num : vec) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    // 使用计数和值赋值
+    vec.assign(5, 10);
+
+    // 输出赋值后的 vector
+    for (int num : vec) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
 }
