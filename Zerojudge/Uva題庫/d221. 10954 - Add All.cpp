@@ -7,7 +7,7 @@ using namespace std;
 #define all(x) x.begin(),x.end() 
 #define ll long long
 
-int main(){
+int main(){//huffman algorithm
     ios::sync_with_stdio(0),cin.tie(0);
     int t,n;
     while(cin>>t&&t){
