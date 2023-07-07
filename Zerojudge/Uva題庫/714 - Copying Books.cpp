@@ -22,7 +22,7 @@ bool check(ll num){
     return work<m;
 }
 
-ll binary_search(ll l,ll r){//binary search
+ll binary_search(ll l,ll r){
     ll mid;
     while(r>l){
         mid=l+r>>1;
@@ -51,7 +51,8 @@ int main(){
         vector<vector<ll> > ans(m);
         vector<ll> ans_check(m,Max);
         ll index=m-1;
-        for(ll i=n-1;i>=0;i--){
+
+        for(ll i=n-1;i>=0;i--){//greedy algorithm
             if(i<index)
                 index--,i++;
             else if(ans_check[index]>=book[i]){
@@ -61,7 +62,8 @@ int main(){
             else
                 index--,i++;
         }
-        for(ll i=0;i<m-1;i++){
+
+        for(ll i=0;i<m-1;i++){//嚴格輸出...
             for(ll j=ans[i].size()-1;j>=0;j--){
                 cout<<ans[i][j]<<" ";
             }
