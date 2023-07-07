@@ -73,4 +73,5 @@ int main(){
             cout<<ans.back()[i]<<" ";
         cout<<ans.back().front()<<endl;
     }
+    return 0;
 }
