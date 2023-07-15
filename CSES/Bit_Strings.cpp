@@ -1,3 +1,4 @@
+//Bit_Strings
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -11,8 +12,21 @@ typedef pair<double, double> pdd;
 typedef vector<int> vi;
 typedef vector<ll> vll;
 
+//快速冪
+ll qpow(ll a,ll n){
+    int res=1;
+    while(n){
+        if(n&1)
+            res=res*a%1000000007;
+        a=a*a%1000000007;
+        n>>=1;
+    }
+    return res;
+}
+
 int main(){
-    //ios::sync_with_stdio(0),cin.tie(0);
-    int n=10;
-    cout<<(n>>2);
+    ios::sync_with_stdio(0),cin.tie(0);
+    int n;
+    cin>>n;
+    cout<<qpow(2,n);
 }

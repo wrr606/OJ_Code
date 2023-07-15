@@ -1,3 +1,4 @@
+//Coin_Piles
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -12,7 +13,17 @@ typedef vector<int> vi;
 typedef vector<ll> vll;
 
 int main(){
-    //ios::sync_with_stdio(0),cin.tie(0);
-    int n=10;
-    cout<<(n>>2);
+    ios::sync_with_stdio(0),cin.tie(0);
+    int t;
+    cin>>t;
+    while(t--){
+        int a,b;
+        cin>>a>>b;
+        if(a<b)
+            swap(a,b);
+        if((a+b)%3==0&&a<=b*2)
+            cout<<"YES\n";
+        else
+            cout<<"NO\n";
+    }
 }

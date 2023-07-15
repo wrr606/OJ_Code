@@ -1,3 +1,4 @@
+//Trailing_Zeros
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -12,7 +13,12 @@ typedef vector<int> vi;
 typedef vector<ll> vll;
 
 int main(){
-    //ios::sync_with_stdio(0),cin.tie(0);
-    int n=10;
-    cout<<(n>>2);
+    ios::sync_with_stdio(0),cin.tie(0);
+    int n,ans=0,temp=5;
+    cin>>n;
+    while(n>=temp){
+        ans+=n/temp;
+        temp*=5;
+    }
+    cout<<ans;
 }
