@@ -14,15 +14,18 @@ typedef vector<ll> vll;
 
 int main(){
     ios::sync_with_stdio(0),cin.tie(0);
-    int n,x,ans;
+    int n,x,ans=0;
     cin>>n>>x;
-    set<int> person;
+    vi person(n);
     for(auto &i:person)
-        cin>>ans,person.insert(ans);
-    ans=0;
-    auto iter=person.begin();
-    while(iter!=person.end()){
-        int d=x-*iter;
-        auto Max=person.lower_bound()
+        cin>>i;
+    sort(all(person));
+    int i=0,j=n-1;
+    while(i<=j){
+        if(person[i]+person[j]<=x)
+            i++,j--,ans++;
+        else
+            ans++,j--;
     }
+    cout<<ans;
 }
