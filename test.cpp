@@ -1,16 +1,17 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <set>
 
 using namespace std;
 
 int main() {
-  vector<int> v = {1, 3, 5, 7, 9, 11, 13};
-  int val = 6;
+  set<int> s = {5 ,3, 7, 8, 5};
+  int val = 5;
 
-  auto lower = lower_bound(v.begin(), v.end(), val);
-  auto upper = upper_bound(v.begin(), v.end(), val);
+  auto lower = s.lower_bound(val);
+  auto upper = s.upper_bound(val);
 
-  cout << "The lower bound of " << val << " is " << *lower << endl;
-  cout << "The upper bound of " << val << " is " << *upper << endl;
+  cout << "The lower bound of " << val << " is " << *--lower << endl;
+  cout << "The upper bound of " << val << " is " << *--upper << endl;
 
   return 0;
 }
