@@ -1,7 +1,7 @@
 //Playlist
 #include<bits/stdc++.h>
 using namespace std;
- 
+
 #define endl '\n'
 #define all(x) x.begin(),x.end() 
 typedef long long int ll;
@@ -12,9 +12,9 @@ typedef pair<double, double> pdd;
 typedef vector<int> vi;
 typedef vector<ll> vll;
 
-unordered_set<int> check;
+bitset<1000000002> check;
 
-int main(){
+int main(){//最長不重複子序列
     ios::sync_with_stdio(0),cin.tie(0);
     int n,ans=0;
     cin>>n;
@@ -26,12 +26,12 @@ int main(){
         return 0;
     }
     for(int l=0,r=0;l<n;l++){
-        while(r<n&&!check.count(song[r])){
-            check.insert(song[r]);
+        while(r<n&&!check[song[r]]){
+            check[song[r]]=1;
             r++;
         }
         ans=max(ans,r-l);
-        check.erase(song[l]);
+        check[song[l]]=0;
     }
     cout<<ans;
 }
