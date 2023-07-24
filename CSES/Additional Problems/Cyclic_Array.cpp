@@ -1,3 +1,4 @@
+//Cyclic_Array
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -13,10 +14,5 @@ typedef vector<ll> vll;
 
 int main(){
     ios::sync_with_stdio(0),cin.tie(0);
-    vi x(10);
-    for(auto &i:x)
-      cin>>i;
-    sort(all(x));
-    for(const auto &i:x)
-      cout<<i<<" ";
+    
 }
