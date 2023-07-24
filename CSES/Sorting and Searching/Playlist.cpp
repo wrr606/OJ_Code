@@ -14,7 +14,7 @@ typedef vector<ll> vll;
 
 bitset<1000000002> check;
 
-int main(){//最長不重複子序列
+int main(){//greedy 最長不重複子序列
     ios::sync_with_stdio(0),cin.tie(0);
     int n,ans=0;
     cin>>n;

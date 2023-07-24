@@ -28,7 +28,7 @@ int binary_search(vector<pii > &num,int val){
     return res;
 }
 
-int main(){
+int main(){//greedy 二分搜
     ios::sync_with_stdio(0),cin.tie(0);
     int n,x,temp;
     cin>>n>>x;

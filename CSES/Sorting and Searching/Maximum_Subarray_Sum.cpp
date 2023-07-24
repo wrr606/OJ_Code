@@ -12,7 +12,7 @@ typedef pair<double, double> pdd;
 typedef vector<int> vi;
 typedef vector<ll> vll;
 
-int main(){//最大區間和
+int main(){//dp 最大區間和
     ios::sync_with_stdio(0),cin.tie(0);
     int n;
     cin>>n;

@@ -12,7 +12,7 @@ typedef pair<double, double> pdd;
 typedef vector<int> vi;
 typedef vector<ll> vll;
 
-int main(){//最大區間重疊
+int main(){//greedy 最大區間重疊
     ios::sync_with_stdio(0),cin.tie(0);
     map<int,int> customers;
     int n,a,b;

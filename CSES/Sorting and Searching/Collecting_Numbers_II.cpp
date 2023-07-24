@@ -29,7 +29,7 @@ int check(vi &num,int a,int b){
     return res;
 }
 
-int main(){
+int main(){////greedy 剪枝
     ios::sync_with_stdio(0),cin.tie(0);
     int n,m,a,b,ans=1;
     cin>>n>>m;
