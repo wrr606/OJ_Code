@@ -1,37 +1,27 @@
-//Playlist
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
- 
-#define endl '\n'
-#define all(x) x.begin(),x.end() 
-typedef long long int ll;
-typedef long double ld;
-typedef pair<int, int> pii;
-typedef pair<ll, ll> pll;
-typedef pair<double, double> pdd;
-typedef vector<int> vi;
-typedef vector<ll> vll;
-
-unordered_set<int> check;
 
 int main(){
-    ios::sync_with_stdio(0),cin.tie(0);
-    int n,ans=0;
-    cin>>n;
-    vi song(n);
-    for(auto &i:song)
-        cin>>i;
-    if(n==1){
-        cout<<1;
-        return 0;
+  int N,M;
+  cin >> N >> M;
+  list<int> l;
+  for(int i=0;i<N;i++){
+    l.push_back(i);  //放入編號0~N-1
+  }
+  list<int>::iterator it=l.begin();
+  while(N>1){  //直到剩下1人
+    N--;
+    int cnt=1;
+    while(cnt<M){  //找到加一個要刪除的點
+      cnt++;
+      it++;
+      if(it==l.end()) it=l.begin();
     }
-    for(int l=0,r=0;l<n;l++){
-        while(r<n&&!check.count(song[r])){
-            check.insert(song[r]);
-            r++;
-        }
-        ans=max(ans,r-l);
-        check.erase(song[l]);
-    }
-    cout<<ans;
+    auto erase=it;
+    it++;
+    if(it==l.end()) it=l.begin();
+    l.erase(erase);  //刪除
+  } 
+  cout << *it << endl;
+  return 0;
 }
