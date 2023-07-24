@@ -12,7 +12,7 @@ typedef pair<double, double> pdd;
 typedef vector<int> vi;
 typedef vector<ll> vll;
 
-int main(){
+int main(){//中位數
     ios::sync_with_stdio(0),cin.tie(0);
     int n;
     cin>>n;
