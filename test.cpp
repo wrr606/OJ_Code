@@ -1,5 +1,8 @@
 #include<bits/stdc++.h>
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
 using namespace std;
+using namespace __gnu_pbds;
 
 #define endl '\n'
 #define all(x) x.begin(),x.end() 
@@ -10,13 +13,8 @@ typedef pair<ll, ll> pll;
 typedef pair<double, double> pdd;
 typedef vector<int> vi;
 typedef vector<ll> vll;
+typedef vector<vector<int> > vvi;
 
 int main(){
-    ios::sync_with_stdio(0),cin.tie(0);
-    vi x(10);
-    for(auto &i:x)
-      cin>>i;
-    sort(all(x));
-    for(const auto &i:x)
-      cout<<i<<" ";
+    //ios::sync_with_stdio(0),cin.tie(0);
 }
