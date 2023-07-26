@@ -1,7 +1,9 @@
-//Josephus_Problem_I
 #include<bits/stdc++.h>
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
 using namespace std;
- 
+using namespace __gnu_pbds;
+
 #define endl '\n'
 #define all(x) x.begin(),x.end() 
 typedef long long int ll;
@@ -11,24 +13,9 @@ typedef pair<ll, ll> pll;
 typedef pair<double, double> pdd;
 typedef vector<int> vi;
 typedef vector<ll> vll;
- 
-int main(){//約瑟夫問題 brute
-    ios::sync_with_stdio(0),cin.tie(0);
-    int n;
-    cin>>n;
-    list<int> person;
-    for(int i=1;i<=n;i++)
-        person.push_back(i);
-    auto iter=person.begin();
-    while(n>0){
-        iter++,n--;
-        if(iter==person.end())
-            iter=person.begin();
-        cout<<*iter<<" ";
-        auto erase=iter;
-        iter++;
-        if(iter==person.end())
-            iter=person.begin();
-        person.erase(erase);
-    }
+typedef vector<vector<int> > vvi;
+typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
+
+int main(){
+    //ios::sync_with_stdio(0),cin.tie(0);
 }
