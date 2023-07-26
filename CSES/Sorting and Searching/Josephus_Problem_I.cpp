@@ -12,7 +12,7 @@ typedef pair<double, double> pdd;
 typedef vector<int> vi;
 typedef vector<ll> vll;
  
-int main(){//約瑟夫問題 brute
+int main(){//約瑟夫問題 list brute
     ios::sync_with_stdio(0),cin.tie(0);
     int n;
     cin>>n;
