@@ -1,3 +1,4 @@
+//Tasks_and_Deadlines
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -17,10 +18,18 @@ typedef vector<vector<int> > vvi;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
-int main(){
-	//ios::sync_with_stdio(0),cin.tie(0);
-	ll a=0;
-	a+=2147483640;
-	a+=2147483640;
-	cout<<a;
+int main(){//greed sort
+    ios::sync_with_stdio(0),cin.tie(0);
+    int n;
+    cin>>n;
+    vector<pii> mission(n);
+    for(auto &i:mission)
+        cin>>i.first>>i.second;
+    sort(all(mission));
+    ll time=0,reward=0;
+    for(const auto &i:mission){
+        time+=i.first;
+        reward+=i.second-time;
+    }
+    cout<<reward;
 }
