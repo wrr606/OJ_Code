@@ -28,7 +28,7 @@ bool cmp(range_and_index a,range_and_index b){
     return a.first<b.first;
 }
 
-int main(){
+int main(){//greedy sort pbds
     ios::sync_with_stdio(0),cin.tie(0);
     int n;
     cin>>n;
