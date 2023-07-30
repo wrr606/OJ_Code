@@ -1,26 +1,19 @@
-#include<bits/stdc++.h>
-#include<ext/pb_ds/assoc_container.hpp>
-#include<ext/pb_ds/tree_policy.hpp>
-using namespace std;
-using namespace __gnu_pbds;
+#include <iostream>
+#include <vector>
 
-#define endl '\n'
-#define all(x) x.begin(),x.end() 
-typedef long long int ll;
-typedef long double ld;
-typedef pair<int, int> pii;
-typedef pair<ll, ll> pll;
-typedef pair<double, double> pdd;
-typedef vector<int> vi;
-typedef vector<ll> vll;
-typedef vector<vector<int> > vvi;
-typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
-typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
+int main() {
+    std::vector<int> myVector = {1, 2, 3, 4, 5};
 
-int main(){
-	//ios::sync_with_stdio(0),cin.tie(0);
-	ll a=0;
-	a+=2147483640;
-	a+=2147483640;
-	cout<<a;
+    try {
+        // 正常情况下的使用
+        int element = myVector.at(2);
+        std::cout << "Element at index 2: " << element << std::endl;
+
+        // 尝试访问越界元素
+        int outOfRangeElement = myVector.at(10); // 这里会抛出std::out_of_range异常
+    } catch (const std::out_of_range& e) {
+        std::cout << "Exception caught: " << e.what() << std::endl;
+    }
+
+    return 0;
 }
