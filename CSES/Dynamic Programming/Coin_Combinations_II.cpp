@@ -1,4 +1,4 @@
-//Coin_Combinations_I
+//Coin_Combinations_II
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -23,14 +23,15 @@ int main(){
     int n,x;
     const int mod=1000000007;
     cin>>n>>x;
-    vi coins(n),dp(1000004);
+    vi coins(n);
     for(auto &i:coins)
         cin>>i;
+    vi dp(1000004);
     dp[0]=1;
-    for(int i=0;i<=x;i++){
-        for(const auto &j:coins){
-            if(i-j>=0)
-                dp[i]=(dp[i]+dp[i-j])%mod;
+    for(const auto &i:coins){
+        for(int j=1;j<=x;j++){
+            if(j-i>=0)
+                dp[j]=(dp[j]+dp[j-i])%mod;
         }
     }
     cout<<dp[x];
