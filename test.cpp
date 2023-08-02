@@ -1,19 +1,22 @@
-#include <iostream>
-#include <vector>
+#include<bits/stdc++.h>
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
+using namespace std;
+using namespace __gnu_pbds;
 
 int main() {
-    std::vector<int> myVector = {1, 2, 3, 4, 5};
-
-    try {
-        // æ­£å¸¸æƒ…å†µä¸‹çš„ä½¿ç”¨
-        int element = myVector.at(2);
-        std::cout << "Element at index 2: " << element << std::endl;
-
-        // å°è¯•è®¿é—®è¶Šç•Œå…ƒç´ 
-        int outOfRangeElement = myVector.at(10); // è¿™é‡Œä¼šæŠ›å‡ºstd::out_of_rangeå¼‚å¸¸
-    } catch (const std::out_of_range& e) {
-        std::cout << "Exception caught: " << e.what() << std::endl;
-    }
+    std::string input;
+    std::cout << "½Ð¿é¤J¤@­Ó¼Æ¦r: ";
+    
+    // ¨Ï¥ÎgetlineÅª¨ú¾ã¦æ¿é¤J
+    std::getline(std::cin, input);
+    
+    // ¨Ï¥Îstringstream¨Ó³B²z¦r²Å¦ê
+    std::stringstream ss;
+    ss << " " + input +" "; // ¦bÀY§À²K¥[ªÅ®æ
+    std::string result = ss.str(); // ±NstringstreamÂà´«¬°std::string
+    
+    std::cout << "¿é¤Jªº¼Æ¦r¬°: " << result << std::endl;
 
     return 0;
 }
