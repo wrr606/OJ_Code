@@ -19,7 +19,16 @@ typedef vector<vector<int> > vvi;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
+void dp12(viint n,string x,string i){
+    if(n==0)
+        y.push_back(x);
+    else{
+        x+=i;
+        dp12(--n,x,"1");
+        dp12(--n,x,"2");
+    }
+}
+
 int main(){
     //ios::sync_with_stdio(0),cin.tie(0);
-    
 }
