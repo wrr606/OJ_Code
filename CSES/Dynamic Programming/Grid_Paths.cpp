@@ -25,7 +25,7 @@ int main(){
     string s;
     cin>>n;
     vector<string> grids(n+2);
-    vector<vi> dp(n+2,vi(n+2));
+    vvi dp(n+2,vi(n+2));
     for(int i=1;i<=n;i++){
         cin>>s;
         stringstream ss(" "+s+" ");

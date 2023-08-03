@@ -23,7 +23,7 @@ int main(){
     int n;
     const int mod=1000000007;
     cin>>n;
-    vector<int> dp(1000002);
+    vi dp(1000002);
     dp[0]=1;
     for(int i=1;i<=n;i++){
         for(int j=1;j<=6;j++){
