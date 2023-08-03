@@ -4,19 +4,22 @@
 using namespace std;
 using namespace __gnu_pbds;
 
-int main() {
-    std::string input;
-    std::cout << "請輸入一個數字: ";
-    
-    // 使用getline讀取整行輸入
-    std::getline(std::cin, input);
-    
-    // 使用stringstream來處理字符串
-    std::stringstream ss;
-    ss << " " + input +" "; // 在頭尾添加空格
-    std::string result = ss.str(); // 將stringstream轉換為std::string
-    
-    std::cout << "輸入的數字為: " << result << std::endl;
+#define endl '\n'
+#define all(x) x.begin(),x.end() 
+typedef long long int ll;
+typedef long double ld;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+typedef pair<double, double> pdd;
+typedef vector<int> vi;
+typedef vector<ll> vll;
+typedef vector<string> vs;
+typedef vector<bool> vb;
+typedef vector<vector<int> > vvi;
+typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
+typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
-    return 0;
+int main(){
+    //ios::sync_with_stdio(0),cin.tie(0);
+    
 }
