@@ -22,9 +22,9 @@ int main(){
     a.insert(n);
     for(int i=n-1;i>0;i-=2){
         if(re)
-            a.insert(i),(i-1>0)?a.insert(i-1),sum_a+=2*i-1:sum_a+=i;
+            a.insert(i),(i-1>0)?(a.insert(i-1),sum_a+=2*i-1):sum_a+=i;
         else
-            b.insert(i),(i-1>0)?b.insert(i-1),sum_b+=2*i-1:sum_b+=i;
+            b.insert(i),(i-1>0)?(b.insert(i-1),sum_b+=2*i-1):sum_b+=i;
         re=!re;
     }
     if(sum_a==sum_b){
