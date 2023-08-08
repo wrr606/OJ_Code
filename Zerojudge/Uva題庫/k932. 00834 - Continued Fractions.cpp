@@ -1,3 +1,4 @@
+//k932. 00834 - Continued Fractions
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -20,11 +21,21 @@ typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_upd
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
 int main(){
-    //ios::sync_with_stdio(0),cin.tie(0);
-    int n;
-    cin>>n;
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++)
-            cout<<i<<" "<<j<<endl;
+    ios::sync_with_stdio(0),cin.tie(0);
+    int a,b,c,d=1;//a/b=c...d
+    while(cin>>a>>b){
+        vi ans;
+        d=1;
+        while(d){
+            c=a/b;
+            d=a%b;
+            ans.push_back(c);
+            a=b;
+            b=d;
+        }
+        cout<<"["<<ans[0]<<";";
+        for(int i=1;i<ans.size()-1;i++)
+            cout<<ans[i]<<",";
+        cout<<ans.back()<<"]\n";
     }
 }
