@@ -1,3 +1,4 @@
+//Movie_Festival_II
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -19,13 +20,33 @@ typedef vector<vector<int> > vvi;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
+bool cmp(pii a,pii b){
+    if(a.second==b.second)
+        return a.first>b.first;
+    return a.second<b.second;
+}
+
 int main(){
-    //ios::sync_with_stdio(0),cin.tie(0);
-    multiset<int> x={1,1,1};
-    int n;
-    cin>>n;
-    if(x.upper_bound(n)==x.begin())
-        cout<<"first";
-    else
-        cout<<*x.upper_bound(n);
+    ios::sync_with_stdio(0),cin.tie(0);
+    int n,k;
+    cin>>n>>k;
+    vector<pii> movie(n);
+    for(auto &i:movie)
+        cin>>i.first>>i.second;
+    sort(all(movie),cmp);
+    multiset<int> idle;
+    int ans=0;
+    for(int i=0;i<k;i++)
+        idle.insert(-1);
+    for(const auto &i:movie){
+        auto iter=idle.upper_bound(i.first);
+        if(iter==idle.begin())
+            continue;
+        else{
+            idle.erase(--iter);
+            idle.insert(i.second);
+            ans++;
+        }
+    }
+    cout<<ans;
 }
