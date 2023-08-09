@@ -21,10 +21,4 @@ typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_no
 
 int main(){
     //ios::sync_with_stdio(0),cin.tie(0);
-    int n;
-    cin>>n;
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++)
-            cout<<i<<" "<<j<<endl;
-    }
 }
