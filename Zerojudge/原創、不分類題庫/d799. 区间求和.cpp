@@ -1,4 +1,4 @@
-//d799. åŒºé—´æ±‚å’Œ
+//d799. ??¨D©M
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -42,14 +42,14 @@ ll sum(vll &BIT1,vll &BIT2,int idx){
     return query(BIT1,idx)*idx-query(BIT2,idx);
 }
 
-void add_range(vll &BIT1,vll &BIT2,int l,int r,ll val){//å€é–“åŠ å€¼
+void add_range(vll &BIT1,vll &BIT2,int l,int r,ll val){//°Ï¶¡¥[­È
     update(BIT1,l,val);
     update(BIT1,r+1,-val);
     update(BIT2,l,val*(l-1));
     update(BIT2,r+1,-val*r);
 }
 
-int main(){//BIT å€é–“æ’å€¼ å€é–“æŸ¥è©¢
+int main(){//BIT °Ï¶¡´¡­È °Ï¶¡¬d¸ß
     ios::sync_with_stdio(0),cin.tie(0);
     cin>>n;
     vll num(n+1),BIT1(n+1),BIT2(n+1);
