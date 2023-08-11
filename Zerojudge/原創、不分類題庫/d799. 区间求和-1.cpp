@@ -49,7 +49,7 @@ void add_range(vll &BIT1,vll &BIT2,int l,int r,ll val){//區間加值
     update(BIT2,r+1,-val*r);
 }
 
-int main(){//BIT 區間插值 區間查詢
+int main(){//雙BIT 區間插值 區間查詢
     ios::sync_with_stdio(0),cin.tie(0);
     cin>>n;
     vll num(n+1),BIT1(n+1),BIT2(n+1);
