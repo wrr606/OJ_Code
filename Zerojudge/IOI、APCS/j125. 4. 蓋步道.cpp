@@ -70,9 +70,8 @@ int find_highest(){//二分搜 upper_bound高度差
             r=mid;
         else
             l=mid+1;
-        cout<<l<<" "<<mid<<" "<<r<<endl;
     }
-    return r;
+    return l;
 }
 
 int main(){
@@ -87,11 +86,3 @@ int main(){
     int highest=find_highest();
     cout<<highest<<endl<<BFS(highest)<<endl;
 }
-/*
-4
-8 8 6 7
-4 9 3 2
-9 3 1 8
-4 7 1 7
-
-*/

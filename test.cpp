@@ -19,6 +19,23 @@ typedef vector<vector<int> > vvi;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
+vi x(1e6);
+
+void bs(){
+    int l=0,r=1e6,mid;
+    while(l<r){
+        mid=l+(r-l)/2;
+        if(mid<16)
+            l=mid+1;
+        else
+            r=mid;
+    }
+    cout<<l<<" "<<mid<<" "<<r<<endl;
+}
+
 int main(){
-    //ios::sync_with_stdio(0),cin.tie(0);
+    ios::sync_with_stdio(0),cin.tie(0);
+    for(int i=0;i<1e6;i++)
+        x[i]=i;
+    bs();
 }
