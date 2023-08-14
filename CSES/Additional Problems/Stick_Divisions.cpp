@@ -1,3 +1,4 @@
+//Stick_Divisions
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -19,13 +20,23 @@ typedef vector<vector<int> > vvi;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
-int main(){
-    //ios::sync_with_stdio(0),cin.tie(0);
-    priority_queue<int> x;
-    x.push(10);
-    x.push(1);
-    while(!x.empty()){
-        cout<<x.top()<<endl;
-        x.pop();
+int main(){//priority_queue
+    ios::sync_with_stdio(0),cin.tie(0);
+    ll x,n,temp;
+    cin>>x>>n;
+    priority_queue<ll,vll,greater<ll>> pq;
+    while(n--){
+        cin>>temp;
+        pq.push(temp);
     }
+    ll ans=0;
+    while(pq.size()>1){
+        temp=pq.top();
+        pq.pop();
+        temp+=pq.top();
+        pq.pop();
+        pq.push(temp);
+        ans+=temp;
+    }
+    cout<<ans;
 }
