@@ -26,15 +26,15 @@ vll ans;
 
 void Dijkstra(){
     priority_queue<pll,vector<pll>,greater<pll>> pq;
-    pq.push({INT_MIN,1});
+    pq.push({0,1});
     while(!pq.empty()){
         pll cur=pq.top();
         pq.pop();
         if(cur.first>ans[cur.second])
             continue;
         for(const auto &i:routs[cur.second]){
-            if(ans[i.second]>ans[cur.second]+i.first){
-                ans[i.second]=ans[cur.second]+i.first;
+            if(ans[i.second]>cur.first+i.first){
+                ans[i.second]=cur.first+i.first;
                 pq.push({ans[i.second],i.second});
             }
         }
