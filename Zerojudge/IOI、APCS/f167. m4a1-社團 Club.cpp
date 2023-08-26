@@ -33,8 +33,8 @@ void BFS(){
     while(!que.empty()){
         int cur=que.front();
         que.pop();
+        ans.push_back(cur);
         for(const auto &i:routs[cur]){
-            ans[i]+=ans[cur];
             in[i]--;
             if(!in[i])
                 que.push(i);
@@ -46,15 +46,19 @@ int main(){
     ios::sync_with_stdio(0),cin.tie(0);
     int m;
     cin>>n>>m;
-    in.assign(n+1,0),ans.assign(n+1,0),routs.assign(n+1,vi());
+    in.assign(n+1,0),routs.assign(n+1,vi());
     while(m--){
         int a,b;
         cin>>a>>b;
         routs[a].push_back(b);
         in[b]++;
     }
-    ans[1]=1;
     BFS();
-    for(int i=1;i<=n;i++)
-        cout<<ans[i]<<endl;
+    if(ans.size()==n){
+        cout<<"YES\n";
+        for(const auto &i:ans)
+            cout<<i<<endl;
+    }
+    else
+        cout<<"NO\n";
 }

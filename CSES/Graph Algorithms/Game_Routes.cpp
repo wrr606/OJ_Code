@@ -1,4 +1,4 @@
-//f167. m4a1-社團 Club
+//Game_Routes
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -20,11 +20,12 @@ typedef vector<vector<int> > vvi;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
-int n;
-vi in,ans;
+const int mod=1e9+7;
 vvi routs;
+vi in;
+vll dp;
 
-void BFS(){
+void BFS(const int &n){
     queue<int> que;
     for(int i=1;i<=n;i++){
         if(!in[i])
@@ -34,8 +35,9 @@ void BFS(){
         int cur=que.front();
         que.pop();
         for(const auto &i:routs[cur]){
-            ans[i]+=ans[cur];
             in[i]--;
+            dp[i]+=dp[cur];
+            dp[i]%=mod;
             if(!in[i])
                 que.push(i);
         }
@@ -44,17 +46,16 @@ void BFS(){
 
 int main(){
     ios::sync_with_stdio(0),cin.tie(0);
-    int m;
+    int n,m;
     cin>>n>>m;
-    in.assign(n+1,0),ans.assign(n+1,0),routs.assign(n+1,vi());
+    routs.assign(n+1,vi()),dp.assign(n+1,0),in.assign(n+1,0);
+    dp[1]=1;
     while(m--){
         int a,b;
         cin>>a>>b;
         routs[a].push_back(b);
         in[b]++;
     }
-    ans[1]=1;
-    BFS();
-    for(int i=1;i<=n;i++)
-        cout<<ans[i]<<endl;
+    BFS(n);
+    cout<<dp[n];
 }
