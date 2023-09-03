@@ -1,3 +1,4 @@
+//d493. 入门求幂题(求幂系列题1)
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -20,9 +21,7 @@ typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_upd
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
 int main(){
-    //ios::sync_with_stdio(0),cin.tie(0);
-    vi x={1,2,3,4,5};
-    x.erase(1,1);
-    for(auto i:x)
-        cout<<i<<" ";
+    double a,n;
+    scanf("%lf%lf",&a,&n);
+    printf("%.0f",pow(a,n));
 }

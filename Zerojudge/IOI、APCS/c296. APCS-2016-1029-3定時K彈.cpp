@@ -1,3 +1,4 @@
+//c296. APCS-2016-1029-3定時K彈
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -20,9 +21,20 @@ typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_upd
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
 int main(){
-    //ios::sync_with_stdio(0),cin.tie(0);
-    vi x={1,2,3,4,5};
-    x.erase(1,1);
-    for(auto i:x)
-        cout<<i<<" ";
+    ios::sync_with_stdio(0),cin.tie(0);
+    int n,m,k;
+    cin>>n>>m>>k;
+    ordered_set num;
+    for(int i=1;i<=n;i++)
+        num.insert(i);
+    m--;
+    int cur=0;
+    while(k--){
+        cur=(cur+m)%num.size();
+        auto iter=num.find_by_order(cur);
+        num.erase(iter);
+    }
+    if(cur>=num.size())
+        cur=0;
+    cout<<*num.find_by_order(cur)<<endl;
 }

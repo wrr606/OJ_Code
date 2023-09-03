@@ -1,3 +1,4 @@
+//c001. 10405 - Longest Common Subsequence
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -19,10 +20,22 @@ typedef vector<vector<int> > vvi;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
-int main(){
-    //ios::sync_with_stdio(0),cin.tie(0);
-    vi x={1,2,3,4,5};
-    x.erase(1,1);
-    for(auto i:x)
-        cout<<i<<" ";
+int dp[1005][1005];
+
+int main(){//LCS DP
+    ios::sync_with_stdio(0),cin.tie(0);
+    string s1,s2;
+    while(cin>>s1){
+        cin>>s2;
+        memset(dp,0,sizeof(dp));
+        for(int i=1;i<=s1.size();i++){
+            for(int j=1;j<=s2.size();j++){
+                if(s1[i-1]==s2[j-1])
+                    dp[i][j]=dp[i-1][j-1]+1;
+                else
+                    dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
+            }
+        }
+        cout<<dp[s1.size()][s2.size()]<<endl;
+    }
 }
