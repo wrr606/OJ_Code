@@ -10,17 +10,16 @@ int main(){
 		while(n--){
 			cin>>m;
 			vector<int> dp(m+1);
-			for(int o=1;o<=m;o++){
-				cin>>dp[o];
+			for(int i=1;i<=m;i++){
+				cin>>dp[i];
 			}
-			int max=dp[1];
+			int mx=dp[1];
 			for(int i=2;i<=m;i++){
 				if(dp[i-1]>0)
 					dp[i]+=dp[i-1];
-				if(dp[i]>max)
-					max=dp[i];
+				mx=max(mx,dp[i]);
 			}
-			cout<<max<<endl;
+			cout<<mx<<endl;
 		}
 	}
 }
