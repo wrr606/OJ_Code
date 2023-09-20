@@ -1,3 +1,4 @@
+//b565. 5.採蘑菇攻略問題
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -21,5 +22,16 @@ typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_no
 
 int main(){
     ios::sync_with_stdio(0),cin.tie(0);
-    
+    int num[55],dp[55],n;
+    while(cin>>n){
+        for(int i=0;i<n;i++)
+            cin>>num[i];
+        dp[0]=num[0];
+        int ans=0;
+        for(int i=1;i<n;i++){
+            dp[i]=max(dp[i-1],0)+num[i];
+            ans=max(ans,dp[i]);
+        }
+        cout<<ans<<endl;
+    }
 }
