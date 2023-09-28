@@ -20,29 +20,37 @@ typedef vector<vector<int> > vvi;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
-const int N=100005;
+constexpr int N=100005;
 int n;
-vector<pair<ll,int>> routs[N];
-vector<vll> ans(2,vll(N,LONG_LONG_MAX));
+
+struct node{
+    ll cost;
+    int point,sale;
+    bool operator<(const node &other)const{
+        return cost>other.cost;
+    }
+};
+
+vector<node> routs[N];
+ll ans[N][2];
 
 void Dijkstra(){
-    priority_queue<pair<ll,pii>,vector<pair<ll,pii>>,greater<pair<ll,pii>>> pq;
-    pq.push({0,{1,0}});
+    priority_queue<node> pq;
+    pq.push({0,1,0});
     while(!pq.empty()){
-        auto cur=pq.top();
-        //cout<<cur.first<<" "<<cur.second.second<<" "<<cur.second.first<<endl;
+        node cur=pq.top();
         pq.pop();
-        if(cur.first>ans[cur.second.second][cur.second.first])
+        if(cur.cost>ans[cur.point][cur.sale])
             continue;
-        for(const auto &i:routs[cur.second.first]){
-            if(cur.first+i.first<ans[cur.second.second][i.second]){
-                ans[cur.second.second][i.second]=cur.first+i.first;
-                pq.push({ans[cur.second.second][i.second],{i.second,cur.second.second}});
+        for(const auto &i:routs[cur.point]){
+            if(ans[i.point][cur.sale]>cur.cost+i.cost){
+                ans[i.point][cur.sale]=cur.cost+i.cost;
+                pq.push({ans[i.point][cur.sale],i.point,cur.sale});
             }
-            if(cur.second.second==0){
-                if(cur.first+i.first/2<ans[1][i.second]){
-                    ans[1][i.second]=cur.first+i.first/2;
-                    pq.push({ans[1][i.second],{i.second,1}});
+            if(cur.sale==0){
+                if(ans[i.point][1]>cur.cost+i.cost/2){
+                    ans[i.point][1]=cur.cost+i.cost/2;
+                    pq.push({ans[i.point][1],i.point,1});
                 }
             }
         }
@@ -58,7 +66,9 @@ int main(){//Dijkstra
         cin>>a>>b>>c;
         routs[a].push_back({c,b});
     }
-    ans[0][1]=0;
+    for(int i=1;i<=n;i++)
+        ans[i][0]=LONG_LONG_MAX,ans[i][1]=LONG_LONG_MAX;
+    ans[1][0]=0;
     Dijkstra();
-    cout<<ans[1][n];
+    cout<<ans[n][1];
 }
