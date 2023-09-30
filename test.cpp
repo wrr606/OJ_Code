@@ -1,50 +1,25 @@
-#include <bits/stdc++.h>
-#define ll long long
-#define inf 0x3f3f3f3f
+#include<bits/stdc++.h>
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
 using namespace std;
-int main() {
+using namespace __gnu_pbds;
 
-    int kase;
-    cin >> kase;
-    while (kase--) {
-        int v, e;
-        cin >> v >> e;
-        vector<vector<pair<int, int>>> gp(v);
-        while (e--) {
-            int start, end, w;
-            cin >> start >> end >> w;
-            gp[start].push_back({end, w});
-        }
-        queue<int> spfa;
-        int vst[v] = {}, dist[v];
-        memset(dist, inf, sizeof(dist));
-        bool inqueue[v] = {}, flag = true;
-        dist[0] = 0;
-        spfa.push(0);
-        while (!spfa.empty()) {
-            int tmp = spfa.front();
-            spfa.pop();
-            vst[tmp]++;
-            if (vst[tmp] > v) {
-                flag = 0;
-                break;
-            }
-            inqueue[tmp] = false;
-            for (auto ele : gp[tmp]) {
-                if (ele.second + dist[tmp] < dist[ele.first]) {
-                    dist[ele.first] = ele.second + dist[tmp];
-                    if (!inqueue[ele.first]) {
-                        spfa.push(ele.first);
-                        inqueue[ele.first] = true;
-                    }
-                }
-            }
-        }
-        if (flag)
-            cout << "not possible\n";
-        else
-            cout << "possible\n";
-    }
+#define endl '\n'
+#define all(x) x.begin(),x.end() 
+typedef long long int ll;
+typedef long double ld;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+typedef pair<double, double> pdd;
+typedef vector<int> vi;
+typedef vector<ll> vll;
+typedef vector<string> vs;
+typedef vector<bool> vb;
+typedef vector<vector<int> > vvi;
+typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
+typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
-    return 0;
+int main(){
+    ios::sync_with_stdio(0),cin.tie(0);
+    
 }
