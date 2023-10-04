@@ -18,27 +18,24 @@ typedef vector<vector<int> > vvi;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
+constexpr int N=1e6+5;
+ll dp[1000005]={};
+
 int main(){
     ios::sync_with_stdio(0),cin.tie(0);
     int n,x;
     cin>>n>>x;
-    vi coins(n),dp(x+1);
-    vector<bool> check(x+1);
-    for(auto &i:coins)
+    vi c(n);
+    fill(dp+1,dp+1+x,INT_MAX);
+    for(auto &i:c)
         cin>>i;
-    for(int i=1;i<=x;i++)
-        dp[i]=i;
-    check[0]=1;
-    for(const auto &i:coins){
+    for(const auto &i:c){
         for(int j=i;j<=x;j++){
-            if(check[j-i]){
-                dp[j]=min(dp[j-i]+1,dp[j]);
-                check[j]=1;
-            }
+            dp[j]=min(dp[j],dp[j-i]+1);
         }
     }
-    if(check[x])
-        cout<<dp[x];
-    else
+    if(dp[x]==INT_MAX)
         cout<<-1;
+    else
+        cout<<dp[x];
 }

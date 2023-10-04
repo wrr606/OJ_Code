@@ -1,3 +1,4 @@
+//a229. 括號匹配問題
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -19,17 +20,28 @@ typedef vector<vector<int> > vvi;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
+int n,num;
+string s;
+
+void recursion(int cur=0,int l=0,int r=0){
+    if(l>n||r>l)
+        return;
+    if(cur==num){
+        cout<<s<<endl;
+        return;
+    }
+    s[cur]='(';
+    recursion(cur+1,l+1,r);
+    s[cur]=')';
+    recursion(cur+1,l,r+1);
+}
+
 int main(){
-	ios::sync_with_stdio(0),cin.tie(0);
-	int dp[35][4]={},n;
-	dp[1][0]=1,dp[1][1]=1;
-	for(int i=2;i<=30;i++){
-		dp[i][0]=dp[i-1][0]+dp[i-1][1]+dp[i-1][2];
-		dp[i][1]=dp[i-1][0];
-		dp[i][2]=dp[i-1][1];
-		dp[i][3]=dp[i-1][2]+(dp[i-1][3]<<1);
-	}
-	while(cin>>n&&n){
-		cout<<dp[n][3]<<endl;
-	}
+    ios::sync_with_stdio(0),cin.tie(0);
+    while(cin>>n){
+        num=n<<1;
+        s.assign(' ',num);
+        recursion();
+        cout<<endl;
+    }
 }

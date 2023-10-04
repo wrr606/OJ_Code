@@ -19,17 +19,30 @@ typedef vector<vector<int> > vvi;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
+int pre[505]={};
+
+int query(int i,int j){
+    if(j<i)
+        swap(i,j);
+    return pre[j]-pre[i-1];
+}
+
 int main(){
-	ios::sync_with_stdio(0),cin.tie(0);
-	int dp[35][4]={},n;
-	dp[1][0]=1,dp[1][1]=1;
-	for(int i=2;i<=30;i++){
-		dp[i][0]=dp[i-1][0]+dp[i-1][1]+dp[i-1][2];
-		dp[i][1]=dp[i-1][0];
-		dp[i][2]=dp[i-1][1];
-		dp[i][3]=dp[i-1][2]+(dp[i-1][3]<<1);
-	}
-	while(cin>>n&&n){
-		cout<<dp[n][3]<<endl;
-	}
+    ios::sync_with_stdio(0),cin.tie(0);
+    int t,cost[505]={},dp[505][50005]={},dis[505]={};
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        for(int i=1;i<=n;i++)
+            cin>>cost[i],pre[i]=cost[i]+pre[i-1];
+        int ans=INT_MAX;
+        for(int i=1;i<=n;i++){
+            for(int j=n;j>=cost[i];j--){
+                dp[i][j]=min(dp[i-1][j-cost[i]],dp[i-1][j]+cost[i]);
+                ans=min(ans,dp[i][j]);
+            }
+        }
+        cout<<endl<<dp[n]<<endl;
+    }
 }
