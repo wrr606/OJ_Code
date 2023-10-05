@@ -18,24 +18,8 @@ typedef vector<bool> vb;
 typedef vector<vector<int> > vvi;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
-char low(int c){
-    if(c<97)
-        return 122-96+c;
-    if(c>122)
-        return c-122+96;
-    return c;
-}
 
-char high(int c){
-    if(c<65)
-        return 90-64+c;
-    if(c>90)
-        return c-90+64;
-    return c;
-}
 int main(){
-	ios::sync_with_stdio(0),cin.tie(0);
-	char a='Z'-1;
-	cout<<low(a)<<endl;
-	cout<<high(a)<<endl;
+    ios::sync_with_stdio(0),cin.tie(0);
+    
 }
