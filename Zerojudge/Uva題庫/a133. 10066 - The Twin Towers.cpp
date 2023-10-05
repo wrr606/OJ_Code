@@ -1,4 +1,4 @@
-//Coin_Combinations_I
+//a133. 10066 - The Twin Towers
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -20,23 +20,24 @@ typedef vector<vector<int> > vvi;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
-constexpr int N=1e6+5,mod=1e9+7;
-int dp[N]={};
-
 int main(){
     ios::sync_with_stdio(0),cin.tie(0);
-    int n,x;
-    cin>>n>>x;
-    vi coin(n);
-    for(auto &i:coin)
-        cin>>i;
-    dp[0]=1;
-    for(int i=1;i<=x;i++){
-        for(const auto &j:coin){
-            if(i-j>=0){
-                dp[i]=(dp[i]+dp[i-j])%mod;
+    int dp[105][105],n1,n2,x[105],y[105],c=1;
+    while(cin>>n1>>n2&&n1&&n2){
+        for(int i=0;i<n1;i++)
+            cin>>x[i];
+        for(int i=0;i<n2;i++)
+            cin>>y[i];
+        memset(dp,0,sizeof(dp));
+        for(int i=1;i<=n1;i++){
+            for(int j=1;j<=n2;j++){
+                if(x[i-1]==y[j-1])
+                    dp[i][j]=dp[i-1][j-1]+1;
+                else
+                    dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
             }
         }
+        cout<<"Twin Towers #"<<c++<<endl;
+        cout<<"Number of Tiles : "<<dp[n1][n2]<<endl<<endl;
     }
-    cout<<dp[x];
 }
