@@ -13,6 +13,8 @@
 *.class
 *.exe
 
+test.*
+
 # Ignore `bin` dir
 bin/
 # or
