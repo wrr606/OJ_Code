@@ -7,11 +7,10 @@ def type_from_clipboard(word,idx):
     pyautogui.typewrite(word[idx])
 
 words = [
-    "calling", "introduce", "investment", "opportunity", "change", "remind", "orientation",
-    "payroll", "information", "Replace", "current", "access", "Sign", "contract", "dress", "at",
-    "Conduct", "floor", "parking", "located", "on", "top", "bottom", "ground"
+    "As", "changes", "policy", "regarding", "leave", "absence", "renew", "familiarize",
+    "analyze", "present", "memorandum", "currently", "circulating", "endorsed", "by",
+    "reflection", "whether", "nor", "each", "how"
 ]
-
 
 idx=0
 while True:
