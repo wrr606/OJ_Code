@@ -1,15 +1,14 @@
 import pyautogui
 import time
 import keyboard
-import pyperclip
 
 def type_from_clipboard(word,idx):
     pyautogui.typewrite(word[idx])
 
 words = [
-    "As", "changes", "policy", "regarding", "leave", "absence", "renew", "familiarize",
-    "analyze", "present", "memorandum", "currently", "circulating", "endorsed", "by",
-    "reflection", "whether", "nor", "each", "how"
+    "shocked", "learn", "president", "admitted", "heart", "surgery", "apart", "from", "prior",
+    "so", "to", "learn", "nutrition", "appointment", "nutritionist", "local", "health", "booked",
+    "canceled", "observed", "investigated"
 ]
 
 idx=0
