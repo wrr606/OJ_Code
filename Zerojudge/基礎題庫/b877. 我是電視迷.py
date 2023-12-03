@@ -1,1 +1,0 @@
-print((lambda n:(n[1]+100-n[0])%100)([int(i) for i in input().split()]))
