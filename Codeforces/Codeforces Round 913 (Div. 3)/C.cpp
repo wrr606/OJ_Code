@@ -19,30 +19,32 @@ typedef vector<vector<int> > vvi;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
-int pre[505]={};
-
-int query(int i,int j){
-    if(j<i)
-        swap(i,j);
-    return pre[j]-pre[i-1];
-}
-
 int main(){
     ios::sync_with_stdio(0),cin.tie(0);
-    int t,cost[505]={},dp[505][50005]={},dis[505]={};
+    int t;
     cin>>t;
     while(t--){
         int n;
-        cin>>n;
-        for(int i=1;i<=n;i++)
-            cin>>cost[i],pre[i]=cost[i]+pre[i-1];
-        int ans=INT_MAX;
-        for(int i=1;i<=n;i++){
-            for(int j=n;j>=cost[i];j--){
-                dp[i][j]=min(dp[i-1][j-cost[i]],dp[i-1][j]+cost[i]);
-                ans=min(ans,dp[i][j]);
+        string s;
+        cin>>n>>s;
+        unordered_map<char,int> cnt;
+        for(const auto &i:s)
+            cnt[i]++;
+        priority_queue<pair<int,char>> pq;
+        for(const auto &i:cnt)
+            pq.push({i.second,i.first});
+        while(pq.size()>1&&pq.top().first!=0){
+            auto fir=pq.top();
+            pq.pop();
+            auto sec=pq.top();
+            pq.pop();
+            if(fir.first-sec.first>0)
+                pq.push({fir.first-sec.first,fir.second});
+            else{
+                pq.push({fir.first-1,fir.second});
+                pq.push({sec.first-1,sec.second});
             }
         }
-        cout<<endl<<dp[n]<<endl;
+        cout<<pq.top().first<<endl;
     }
 }
