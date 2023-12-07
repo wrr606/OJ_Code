@@ -1,3 +1,4 @@
+//a621. 1. Powers of Two
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -21,22 +22,11 @@ typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_no
 
 int main(){
     ios::sync_with_stdio(0),cin.tie(0);
-    int t;
-    cin>>t;
-    while(t--){
-        int n,mx=-1;
-        string s;
-        cin>>n>>s;
-        unordered_map<char,int> cnt;
-        for(const auto &i:s)
-            cnt[i]++,mx=max(mx,cnt[i]);
-        if((mx<<1)<=n){
-            if(n&1)
-                cout<<1<<endl;
-            else
-                cout<<0<<endl;
-        }
-        else
-            cout<<(mx<<1)-n<<endl;
+    int n,ans=1;
+    cin>>n;
+    cout<<"2^0 = 1\n";
+    for(int i=1;i<=n;i++){
+        ans<<=1;
+        cout<<"2^"<<i<<" = "<<ans<<endl;
     }
 }
