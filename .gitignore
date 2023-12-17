@@ -17,6 +17,7 @@
 
 test.*
 
+
 # Ignore `bin` dir
 bin/
 # or
