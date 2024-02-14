@@ -17,6 +17,7 @@
 
 test.*
 .vscode*
+*.csv
 
 # Ignore `bin` dir
 bin/
