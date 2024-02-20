@@ -21,5 +21,21 @@ typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_no
 
 int main(){
     ios::sync_with_stdio(0),cin.tie(0);
-    
+    int t,n,k;
+    cin>>t;
+    while(t--){
+        cin>>n>>k;
+        int cnt=1;
+        for(int i=1;i<=2e5;i++){
+            if((n>>1)+n%2<k){
+                k-=(n>>1)+n%2;
+                n>>=1;
+                cnt<<=1;
+            }
+            else{
+                cout<<cnt*((k<<1)-1)<<endl;
+                break;
+            }
+        }
+    }
 }
