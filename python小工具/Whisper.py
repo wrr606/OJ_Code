@@ -25,7 +25,7 @@ print(f"Model load: {time.time()-start_time} s")
 
 start_time = time.time()
 # 設定影片名稱
-segments, info = model.transcribe("week2.mp4", beam_size=5,vad_filter=True,word_timestamps=True,language="zh")
+segments, info = model.transcribe("week2.mp4", beam_size=5,vad_filter=True,word_timestamps=True)
 print(f"Recognition: {time.time()-start_time} s")
 
 print("Detected language '%s' with probability %f" % (info.language, info.language_probability))
