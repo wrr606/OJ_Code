@@ -25,7 +25,8 @@ print(f"Model load: {time.time()-start_time} s")
 
 start_time = time.time()
 # 設定影片名稱
-segments, info = model.transcribe("week2.mp4", beam_size=5,vad_filter=True,word_timestamps=True)
+file_name="test"
+segments, info = model.transcribe(file_name+".mp4", beam_size=5,vad_filter=True,word_timestamps=True)
 print(f"Recognition: {time.time()-start_time} s")
 
 print("Detected language '%s' with probability %f" % (info.language, info.language_probability))
@@ -64,9 +65,9 @@ srt_content = convert_to_srt(subtitles)
 import os
 cnt=1
 while 1:
-    output_file = f"output{cnt}.srt"
+    output_file = f"{file_name}{cnt}.srt"
     if not os.path.exists(output_file):
-        with open(f"output{cnt}.srt", "w", encoding="utf-8") as file:
+        with open(f"{file_name}.srt" if cnt == 1 else f"{file_name}{cnt}.srt", "w", encoding="utf-8") as file:
             file.write(srt_content)
         break
     cnt+=1
