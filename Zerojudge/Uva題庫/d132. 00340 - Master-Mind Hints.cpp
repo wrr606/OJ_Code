@@ -1,4 +1,3 @@
-//m946. 11121 Base -2
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -22,10 +21,28 @@ typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_no
 
 int main(){
     ios::sync_with_stdio(0),cin.tie(0);
-    int t,n;
-    cin>>t;
-    for(int c=1;c<=t;c++){
-        cin>>n;
-        cout<<"Case #"<<c<<": ";
+    int n,ans[1005],code[1005],cnt=1;
+    while(cin>>n && n){
+        cout<<"Game "<<cnt++<<":\n";
+        map<int,int> mp;
+        for(int i=0;i<n;i++)
+            cin>>ans[i],++mp[ans[i]];
+        while(1){
+            map<int,int> temp=mp,nomatch;
+            int A=0,B=0;
+            for(int i=0;i<n;i++)
+                cin>>code[i];
+            if(count(code,code+n,0)==n)
+                break;
+            for(int i=0;i<n;i++){
+                if(ans[i]==code[i])
+                    A++,--temp[code[i]];
+                else
+                    ++nomatch[code[i]];
+            }
+            for(const auto &[i,j]:nomatch)
+                B+=min(temp[i],j);
+            cout<<"\t("<<A<<','<<B<<")\n";
+        }
     }
 }
