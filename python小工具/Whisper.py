@@ -11,7 +11,7 @@ os.environ["PATH"] += os.environ["PATH"] \
 start_time = time.time()
 
 from faster_whisper import WhisperModel
-#model 在 C:\Users\Sam Fan\.cache 中
+#model 在 c:\Users\Function\.cache 中
 model_size = "large-v3"
 
 # Run on GPU with FP16
