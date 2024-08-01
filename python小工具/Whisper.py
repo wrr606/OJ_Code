@@ -4,9 +4,10 @@ import time
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 # https://techdiylife.github.io/blog/blog.html?category1=c02&blogid=0021
+# 更，幸好我有留這個網址...
 os.environ["PATH"] += os.environ["PATH"] \
-    +  ";" +  r"C:\Users\Sam Fan\AppData\Local\Programs\Python\Python310\Lib\site-packages\nvidia\cudnn\bin" \
-    +  ";" +  r"C:\Users\Sam Fan\AppData\Local\Programs\Python\Python310\Lib\site-packages\nvidia\cublas\bin"
+    +  ";" +  r"C:\Users\Function\AppData\Local\Programs\Python\Python312\Lib\site-packages\nvidia\cudnn\bin" \
+    +  ";" +  r"C:\Users\Function\AppData\Local\Programs\Python\Python312\Lib\site-packages\nvidia\cublas\bin"
 
 start_time = time.time()
 
