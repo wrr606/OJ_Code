@@ -26,7 +26,7 @@ while not ctrl_pressed:
     time.sleep(0.1)
 
 import time
-for _ in range(2):
+for _ in range(20):
     for i in range(10):
         pyautogui.typewrite(f"{i}"*99)
         time.sleep(0.5)
