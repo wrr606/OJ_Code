@@ -1,7 +1,12 @@
 import os
 import time
+from faster_whisper import WhisperModel
+from opencc import OpenCC
 
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
+
+# 設定影片名稱
+file_name="test"
 
 # https://techdiylife.github.io/blog/blog.html?category1=c02&blogid=0021
 # 更，幸好我有留這個網址...
@@ -11,7 +16,6 @@ os.environ["PATH"] += os.environ["PATH"] \
 
 start_time = time.time()
 
-from faster_whisper import WhisperModel
 #model 在 c:\Users\Function\.cache 中
 model_size = "large-v3"
 
@@ -25,14 +29,11 @@ model = WhisperModel(model_size, device="cuda", compute_type="float16")
 print(f"Model load: {time.time()-start_time} s")
 
 start_time = time.time()
-# 設定影片名稱
-file_name="test"
 segments, info = model.transcribe(file_name+".mp4", beam_size=5,vad_filter=True,word_timestamps=True)
 print(f"Recognition: {time.time()-start_time} s")
 
 print("Detected language '%s' with probability %f" % (info.language, info.language_probability))
 
-from opencc import OpenCC
 def convert_to_traditional_chinese(text):
     cc = OpenCC('s2twp')
     return cc.convert(text)
@@ -63,7 +64,6 @@ def format_time(milliseconds):
 
 srt_content = convert_to_srt(subtitles)
 
-import os
 cnt=1
 while 1:
     output_file = f"{file_name}{cnt}.srt"
