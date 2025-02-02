@@ -8,7 +8,16 @@ m = mosspy.Moss(userid, "cc")
 
 # Submission Files
 # m.addFile("submission/a01-sample.py")
-m.addFilesByWildcard("test/*.cpp")
+def add_cpp_files_recursively(folder_path):
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if file.endswith(".cpp") or file.endswith(".c"):
+                full_path = os.path.join(root, file)
+                m.addFile(full_path)
+                print(f"已添加檔案: {full_path}")
+add_cpp_files_recursively("homework")
+
+# m.addFilesByWildcard("homework/*.cpp")
 
 url = m.send() # Submission Report URL
 
