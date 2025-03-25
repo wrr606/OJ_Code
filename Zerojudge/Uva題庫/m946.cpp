@@ -1,4 +1,4 @@
-//m946. 11121 Base -2
+//11121 - Base -2
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -22,10 +22,26 @@ typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_no
 
 int main(){
     ios::sync_with_stdio(0),cin.tie(0);
-    int t,n;
+    int t;
     cin>>t;
     for(int c=1;c<=t;c++){
+        int n;
         cin>>n;
         cout<<"Case #"<<c<<": ";
+        if(!n){
+            cout<<0<<endl;
+            continue;
+        }
+        vi ans;
+        while(n){
+            ans.push_back(n%(-2));
+            n=n/(-2);
+            if(ans.back()<0)
+                ans.back()=1,n++;
+        }
+        reverse(all(ans));
+        for(const auto &i:ans)
+            cout<<i;
+        cout<<endl;
     }
 }

@@ -19,23 +19,28 @@ typedef vector<vector<int> > vvi;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> ordered_multiset;
 
-constexpr int N=1e4+5;
-int price[N];
-
 int main(){
     ios::sync_with_stdio(0),cin.tie(0);
+    vs a={"pop","no","zip","zotz","tzec","xul","yoxkin","mol","chen","yax","zac","ceh","mac","kankin","muan","pax","koyab","cumhu"},
+    b={"imix","ik","akbal","kan","chicchan","cimi","manik","lamat","muluk","ok","chuen","eb","ben","ix","mem","cib","caban","eznab","canac","ahau"};
     int t;
     cin>>t;
+    cout<<t<<endl;
     while(t--){
-        int n;
-        cin>>n;
-        for(int i=0;i<n;i++)
-            cin>>price[i];
-        ll sum=0;
-        for(int i=1;i<n;i++){
-            if(price[i]>price[i-1])
-                sum+=price[i]-price[i-1];
+        string _n, m;
+        ll years, n;
+        cin>>_n>>m>>years;
+        n=stoi(_n.substr(0, _n.size()-1));
+        years=years*365+n+1;
+        for(const auto &i:a){
+            if(i==m){
+                break;
+            }
+            years+=20;
         }
-        cout<<sum<<endl;
+        ll ans_y=years/260;
+        years%=260;
+
+        cout<<((years%13)?(years%13):13)<<" "<<b[(years-1)%20]<<" "<<ans_y<<endl;
     }
 }
