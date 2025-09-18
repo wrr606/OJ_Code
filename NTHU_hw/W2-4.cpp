@@ -22,6 +22,7 @@ typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_no
 constexpr int n = 8;
 int ans = 0;
 bool pos[n], LD_RU[n*n-1], LU_RD[n*n-1];
+vs grid(n);
 
 inline void update(const int &y, const int &x){
 	pos[x] = !pos[x];
@@ -39,14 +40,24 @@ inline bool check(const int &y, const int &x){
 	return 1;
 }
 
-void DFS(const int x = 0){
-	if(x==8)
+void DFS(const int y = 0){
+	if(y==n){
+		ans++;
 		return;
-	
+	}
+	for(int x=0;x<n;x++){
+		if(!check(y, x) || grid[y][x]=='*')
+			continue;
+		update(y, x);
+		DFS(y + 1);
+		update(y, x);
+	}
 }
 
 int main(){
 	ios::sync_with_stdio(0),cin.tie(0);
+	for(auto &i:grid)
+		cin>>i;
 	DFS();
 	cout<<ans;
 }
