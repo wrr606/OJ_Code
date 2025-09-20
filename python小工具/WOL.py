@@ -1,6 +1,6 @@
 import socket
 
-def wake_on_lan(macaddress, broadcast="192.168.31.100", port=9):
+def wake_on_lan(macaddress, broadcast="192.168.31.255", port=9):
     macaddress = macaddress.replace(":", "").replace("-", "").replace(".", "")
 
     data = b"FF" * 6 + (macaddress * 16).encode()
