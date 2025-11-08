@@ -39,12 +39,10 @@ inline ld get_slope(const ld &p){
 
 void my_binary_search(ld &L, ld &R, const auto &check){
     constexpr ld eps = 1e-9;
-    if(check(R) == 1)    L = R, R = R + eps;
-    if(check(L) == 0)    R = L, L = L - eps;
     while(L + eps < R){
         const ld mid = L + (R - L) / 2;
         if(check(mid) == 1)
-            L = mid;
+            L = mid + 1;
         else
             R = mid;
     }

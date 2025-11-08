@@ -48,18 +48,10 @@ signed main(){
         return 0;
     }
     int L = 0, R = total_time;
-    while(L + 1 < R){
-        if(usage_time(R) <= length){
-            L = R, R = R + 1;
-            break;
-        }
-        if(usage_time(L) > length){
-            R = L, L = L - 1;
-            break;
-        }
+    while(L < R){
         const int mid = L + ((R - L) >> 1);
         if(usage_time(mid) <= length)
-            L = mid;
+            L = mid + 1;
         else
             R = mid;
     }

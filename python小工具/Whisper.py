@@ -7,6 +7,7 @@ os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 # 設定影片名稱
 file_name="test"
+file_type=".mp4"
 
 # https://techdiylife.github.io/blog/blog.html?category1=c02&blogid=0021
 # 更，幸好我有留這個網址...
@@ -29,7 +30,7 @@ model = WhisperModel(model_size, device="cuda", compute_type="float16")
 print(f"Model load: {time.time()-start_time} s")
 
 start_time = time.time()
-segments, info = model.transcribe(file_name+".mp4", beam_size=5,vad_filter=True,word_timestamps=True)
+segments, info = model.transcribe(file_name+file_type, beam_size=5,vad_filter=True,word_timestamps=True)
 print(f"Recognition: {time.time()-start_time} s")
 
 print("Detected language '%s' with probability %f" % (info.language, info.language_probability))

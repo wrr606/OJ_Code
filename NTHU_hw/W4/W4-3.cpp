@@ -41,20 +41,12 @@ signed main(){
         return cnt > k;
     };
     int L = *max_element(arr, arr + n), R = accumulate(arr, arr + n, 0LL);
-    while(L + 1 < R){
-        if(greed(R)){
-            L = R, R = R + 1;
-            break;
-        }
-        if(!greed(L)){
-            R = L, L = L - 1;
-            break;
-        }
+    while(L < R){
         const int mid = L + (R - L >> 1);
         if(greed(mid))
-            L = mid;
+            L = mid + 1;
         else
             R = mid;
     }
-    cout<<R<<endl;
+    cout<<L<<endl;
 }
