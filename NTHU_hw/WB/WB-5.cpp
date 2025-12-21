@@ -21,22 +21,24 @@ int main(){
     ios::sync_with_stdio(0),cin.tie(0);
     int n,x;
     cin>>n>>x;
-    vector<pii> num(n);
-    for(int i=0;i<n;i++)
-        cin>>num[i].first,num[i].second=i;
-    sort(all(num));
-    for(int i=0;i<n;i++){
-        int l=0,r=n-1,mid,val=x-num[i].first;
-        while(l<=r){
-            mid=num[r].first+num[l].first;
-            if(l!=i && l!=r && r!=i && mid==val){
-                cout<<num[i].second+1<<" "<<num[l].second+1<<" "<<num[r].second+1<<endl;
-                return 0;
+    vi num(n);
+    unordered_map<int,pii> check;
+    for(auto &i:num)
+        cin>>i;
+    for(int i=0;i<n-1;i++){
+        for(int j=i+1;j<n;j++){
+            check[num[i]+num[j]]={i,j};
+        }
+    }
+    for(int i=0;i<n-1;i++){
+        for(int j=i+1;j<n;j++){
+            int sum=x-num[i]-num[j];
+            if(check.count(sum)){
+                if(check[sum].first!=i&&check[sum].second!=j&&check[sum].first!=j&&check[sum].second!=i){
+                    cout<<i+1<<" "<<j+1<<" "<<check[sum].first+1<<" "<<check[sum].second+1<<endl;
+                    return 0;
+                }
             }
-            else if(mid>val)
-                r--;
-            else
-                l++;
         }
     }
     cout<<"IMPOSSIBLE\n";
