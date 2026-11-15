@@ -10,11 +10,11 @@
 !LICENSE
 
 ### Above combination will ignore all files without extension ###
-
+.venv
 # Ignore files with extension `.class` & `.exe`
 *.class
 *.exe
-委託
+data
 test.*
 .vscode*
 *.csv
